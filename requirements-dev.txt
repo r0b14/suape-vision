@@ -1,0 +1,5 @@
+# Instale com: pip install -r requirements-dev.txt
+-r requirements.txt
+requests>=2.31.0
+Pillow>=10.0.0
+opencv-python>=4.8.0

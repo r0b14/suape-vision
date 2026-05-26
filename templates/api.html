@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='logo.png') }}" type="image/png">
+    <title>API SUAPE Vision</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #004A2E;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .logo {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            max-width: 80px;
+            height: auto;
+        }
+        .name-logo {
+            margin-left: 8px;
+            color: #004A2E;
+            font-weight: lighter;
+            font-size: 1.8em;
+            letter-spacing: -1px;
+            line-height: 30px;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            color: #004A2E;
+            font-size: 1.5em;
+        }
+        p {
+            color: #555;
+            font-size: 0.95em;
+        }
+        button {
+            background-color: #004A2E;
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            display: block;
+            font-size: 14px;
+            margin: 6px 0;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #333;
+        }
+        @media (max-width: 600px) {
+            .name-logo { font-size: 1.5em; }
+            h1 { font-size: 1.2em; }
+            button { padding: 10px; font-size: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="SUAPE Vision">
+            <h1 class="name-logo"><b>SUAPE</b><br>Vision</h1>
+        </div>
+        <h1>Bem-vindos, API SUAPE Vision!</h1>
+        <button onclick="location.href='/api/guia'">Guia de uso da API</button>
+        <button onclick="location.href='/webhook'">Webhook</button>
+        <p>Exemplos de acesso de dados:</p>
+        <button onclick="location.href='/api/dados'">Todos os Dados</button>
+        <button onclick="location.href='/api/dados/id/GH89J'">Filtrar por ID (GH89J)</button>
+        <button onclick="location.href='/api/dados/data/2024-04-20'">Filtrar por Data (2024-04-20)</button>
+        <button onclick="location.href='/api/dados/id/ZX56O/data/2024-01-01'">Filtrar por ID e Data</button>
+    </div>
+</body>
+</html>

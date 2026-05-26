@@ -1,13 +1,12 @@
 import subprocess
+import sys
 
-# Rodar o primeiro script
-process1 = subprocess.Popen(['python3', 'images/images.py'])
 
-# Rodar o segundo script
-process2 = subprocess.Popen(['python3', 'getContainers/video.py'])
+if __name__ == "__main__":
+    process1 = subprocess.Popen([sys.executable, "images/images.py"])
+    process2 = subprocess.Popen([sys.executable, "getContainers/video.py"])
 
-# Espera ambos os processos terminarem
-process1.wait()
-process2.wait()
+    process1.wait()
+    process2.wait()
 
-print("Ambos os scripts foram executados.")
+    print("Ambos os módulos foram encerrados.")

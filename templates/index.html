@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="https://raw.githubusercontent.com/ian-cunha/suape-vision-py/refs/heads/main/src/logo.png"
-        type="image/png">
+    <link rel="icon" href="{{ url_for('static', filename='logo.png') }}" type="image/png">
     <title>SUAPE Vision</title>
     <style>
         body {
@@ -169,9 +168,7 @@
 
     <div class="nav">
         <div class="logo">
-            <img width="70px"
-                src="https://raw.githubusercontent.com/ian-cunha/suape-vision-py/refs/heads/main/src/logo.png"
-                alt="SUAPE Vision">
+            <img width="70px" src="{{ url_for('static', filename='logo.png') }}" alt="SUAPE Vision">
             <h1 class="name-logo"><b>SUAPE</b><br />Vision</h1>
         </div>
 
