@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://raw.githubusercontent.com/ian-cunha/suape-vision-py/refs/heads/main/src/logo.png"
+        type="image/png">
+    <title>SUAPE Vision</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo img {
+            max-width: 100px;
+            height: auto;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .name-logo {
+            margin-left: 8px;
+            color: #004A2E;
+            font-weight: lighter;
+            font-size: 2.3em;
+            letter-spacing: -2px;
+            line-height: 30px;
+        }
+
+        h2 {
+            margin: 0 0 20px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            max-width: 1500px;
+            width: 100%;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        #video,
+        #planilha {
+            flex: 1;
+            padding: 20px;
+        }
+
+        #planilha {
+            border-left: 1px solid #ddd;
+            background-color: #fafafa;
+            overflow-y: auto;
+            max-height: 80vh;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .download-button {
+            margin-top: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #004A2E;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #333;
+        }
+
+        .nav {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            left: 0;
+            right: 0;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            text-align: center;
+            background-color: #f2f2f2;
+            width: 100%;
+            position: relative;
+        }
+
+        footer img {
+            max-width: 150px;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            #planilha {
+                border-left: none;
+                border-top: 1px solid #ddd;
+            }
+
+            #video {
+                overflow: hidden;
+                position: relative;
+                padding-top: 56.25%;
+            }
+
+            #video iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            .name-logo {
+            font-size: 1.6em;
+            letter-spacing: -2px;
+            line-height: 22px;
+        }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="nav">
+        <div class="logo">
+            <img width="70px"
+                src="https://raw.githubusercontent.com/ian-cunha/suape-vision-py/refs/heads/main/src/logo.png"
+                alt="SUAPE Vision">
+            <h1 class="name-logo"><b>SUAPE</b><br />Vision</h1>
+        </div>
+
+        <div class="api-button">
+            <a href="/api" class="button">Acessar API</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="video">
+            <h1>{{ video.title }}</h1>
+            <iframe width="644" height="362"
+                src="https://www.youtube.com/embed/{{ video.url }}?autoplay=1&controls=0&loop=1&showinfo=0&playlist={{ video.url }}&mute=1"
+                frameborder="0" allowfullscreen allow="autoplay">
+            </iframe>
+        </div>
+        <div id="planilha">
+            <h2>Dados do berço</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Categoria</th>
+                        <th>Entrada</th>
+                        <th>Saída</th>
+                        <th>Dock</th>
+                        <th>Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in planilha %}
+                    <tr>
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.categoria }}</td>
+                        <td>{{ item.entrada }}</td>
+                        <td>{{ item.saida }}</td>
+                        <td>{{ item.dock }}</td>
+                        <td>{{ item.data }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="download-button">
+                <a href="/download_csv" class="button">Baixar Relatório</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <img src="https://www.gov.br/dnit/pt-br/assuntos/aquaviario/parcerias_daq/SUAPE.png" alt="Logo SUAPE Vision">
+        <p>Desenvolvido por SUAPE Vision.</p>
+    </footer>
+
+
+</body>
+
+</html>
